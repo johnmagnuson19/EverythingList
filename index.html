@@ -123,7 +123,7 @@ function render(){
     first[L] ? `<a href="#${first[L]}" aria-label="Jump to ${L}">${L}</a>` : `<span aria-hidden="true">${L}</span>`).join("");
   main.innerHTML = shown.length ? shown.map(l=>`
     <section id="${slug(l.title)}">
-      <h2>${esc(l.title)}${l.locked ? (memItems ? "" : " 🔒") : ""}</h2>
+      <h2>${esc(l.title)}</h2>
       ${l.locked ? lockedBody() : (l.items.length ? "" : '<p class="sub">Nothing here yet.</p>') + `<ul>${l.items.map(i=>`<li><a class="g" href="https://www.google.com/search?q=${encodeURIComponent(i.filter(Boolean).join(' '))}" target="_blank" rel="noopener"><b>${esc(i[0])}</b></a><small>${esc(i[1]||"")}</small></li>`).join("")}</ul>`}
     </section>`).join("") : `<p class="empty">Nothing matches “${esc(q.value)}”.</p>`;
 }
