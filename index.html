@@ -12,7 +12,7 @@
    PICTURE: the A–Z tab strip itself, large and sticky
    COLOUR and TYPE: user palette — pacific blue, white, blue slate, platinum, tangerine dream; DM Serif Display letters, Inter text
    LAYOUT: strip on top, then one calm column of lists */
-:root{color-scheme:light dark;
+:root{color-scheme:light;
   --bg:light-dark(#eeeeee,#326273);
   --ink:light-dark(#326273,#ffffff);
   --mute:light-dark(#4a8696,#cfe2e7);
@@ -21,7 +21,7 @@
   --acc:light-dark(#e39774,#e39774);
   --accInk:light-dark(#1f3f4a,#1f3f4a);
   --hov:light-dark(#5c9ead,#e39774)}
-:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:light}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
 html{scroll-padding-top:150px;scroll-behavior:smooth}
