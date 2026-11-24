@@ -10,16 +10,17 @@
 /* VOICE: personal, quiet, quick to use
    IDEA: an address book's thumb-index letter tabs
    PICTURE: the A–Z tab strip itself, large and sticky
-   COLOUR and TYPE: user palette — space indigo, light blue, golden glow, lilac ash, dark cyan; DM Serif Display letters, Inter text
+   COLOUR and TYPE: user palette — pacific blue, white, blue slate, platinum, tangerine dream; DM Serif Display letters, Inter text
    LAYOUT: strip on top, then one calm column of lists */
 :root{color-scheme:light dark;
-  --bg:light-dark(#e4eef0,#2d3047);
-  --ink:light-dark(#2d3047,#f2f0f5);
-  --mute:light-dark(#6e6382,#a799b7);
-  --line:light-dark(#93b7be,#3f4362);
-  --card:light-dark(#ffffff,#373b56);
-  --acc:light-dark(#048a81,#e0ca3c);
-  --accInk:light-dark(#ffffff,#2d3047)}
+  --bg:light-dark(#eeeeee,#326273);
+  --ink:light-dark(#326273,#ffffff);
+  --mute:light-dark(#4a8696,#cfe2e7);
+  --line:light-dark(#d3e2e6,#4a7a8a);
+  --card:light-dark(#ffffff,#3b6d7e);
+  --acc:light-dark(#e39774,#e39774);
+  --accInk:light-dark(#1f3f4a,#1f3f4a);
+  --hov:light-dark(#5c9ead,#e39774)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
@@ -46,7 +47,7 @@ ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 li{background:var(--card);border-radius:10px;padding:11px 14px}
 li b{font-weight:600}
 .g{color:inherit;text-decoration:underline;text-decoration-color:var(--mute);text-underline-offset:3px}
-.g:hover{color:var(--acc);text-decoration-color:var(--acc)}
+.g:hover{color:var(--hov);text-decoration-color:var(--hov)}
 .g:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:3px}li small{color:var(--mute);font-size:14px;margin-left:6px}
 .empty{color:var(--mute);padding:30px 0}
 .top{display:inline-block;margin-top:10px;color:var(--acc);font-size:14px;text-decoration:none}
