@@ -26,21 +26,21 @@
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
 html{scroll-padding-top:150px;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-header{padding:28px max(5vw,16px) 6px;max-width:900px;margin:0 auto}
+header{padding:28px max(5vw,16px) 6px;max-width:900px;margin:0}
 h1{font:400 clamp(32px,6vw,48px)/1.05 "DM Serif Display",Georgia,serif;margin:0 0 4px;text-wrap:balance}
 .sub{color:var(--mute);margin:0}
 .tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px max(5vw,16px)}
-.strip{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:4px}
+.strip{max-width:900px;margin:0;display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:4px}
 .strip a,.strip span{display:flex;align-items:center;justify-content:center;height:44px;border-radius:8px;
   font:400 22px/1 "DM Serif Display",Georgia,serif;text-decoration:none}
 .strip span{color:var(--mute);opacity:.55}
 .strip a{background:var(--acc);color:var(--accInk);transition:transform .15s}
 .strip a:hover{transform:translateY(-2px)}
 .strip a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-.search{max-width:900px;margin:10px auto 0;display:block;width:100%;font:16px Inter,sans-serif;padding:10px 14px;
+.search{max-width:900px;margin:10px 0 0;display:block;width:100%;font:16px Inter,sans-serif;padding:10px 14px;
   border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
 .search:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
-main{max-width:900px;margin:0 auto;padding:10px max(5vw,16px) 60px}
+main{max-width:900px;margin:0;padding:10px max(5vw,16px) 60px}
 section{padding:22px 0;border-bottom:1px solid var(--line)}
 h2{font:400 28px/1.15 "DM Serif Display",Georgia,serif;margin:0 0 10px}
 ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
@@ -51,7 +51,7 @@ li b{font-weight:600}
 .g:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:3px}li small{color:var(--mute);font-size:14px;margin-left:6px}
 .empty{color:var(--mute);padding:30px 0}
 .top{display:inline-block;margin-top:10px;color:var(--acc);font-size:14px;text-decoration:none}
-footer{color:var(--mute);font-size:13px;text-align:center;padding-bottom:30px}
+footer{color:var(--mute);font-size:13px;padding:0 max(5vw,16px) 30px}
 @media(max-width:600px){.strip a,.strip span{height:40px;font-size:19px}html{scroll-padding-top:160px}}
 </style>
 </head>
