@@ -131,7 +131,7 @@ q.addEventListener("input", render);
 render();
 
 /* Memories: encrypted with AES-GCM, key from the password via PBKDF2-SHA256 */
-const MEM = /*MEM*/{"salt": "MG5fiS4ltW0VkqG1Sa9SBA==", "iv": "6SWNxNkERA58IDKc", "iter": 250000, "ct": "4mk0OHhkBQv1WO+xFX0JSaxyAYQtxOHgbWkvoC1jMG1OcLdOGypSFzkrWR86CzlnbQn8OmwxfhOAMqwI2ubmwk6FLBTXgzQn5+WTCw0qeuZCXfbsIxJ13b8ieGw3quJavpn4Y18rgAKpoEuTj3MKHMAsUsuGdQr3erd6NN3f8nfc2NYPDM+N2U5zR+M+A8oVrOYm7Hds40cRwA9KAX3lao03T5q0EJBgmMyQxUyoR3XNuMxr5TKnog=="}/*END*/;
+const MEM = /*MEM*/{"salt": "hH2P69f2WIiLo3fX5wcJZg==", "iv": "JNRW7Vbw8+8qMBsd", "iter": 250000, "ct": "pEVKy2SDT9Kgn02RxVG3iGJjm62ZVHNb277+7prvwXm0Z4YKaCPziMgRL9ScniGamQvTiorfA+92oogFpOgwFlckp99qttIunItIoxIiDvZzHGjUBoaK3wMGygmnZ4fjamy0KtYtRMy8s1Gr9TJCR+gQP1gcty1RdNdhP/WFCUv7Am+Ea68dI8gf3vr/mjua3W3dbsFYK0TvAREjJJ4Esg0XxcFEBfMyAKs5GNcFywk7aubCb8ztlvmzGA=="}/*END*/;
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 async function unlock(pass){
   const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
