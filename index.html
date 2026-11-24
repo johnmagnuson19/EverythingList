@@ -103,8 +103,7 @@ let memItems = null;
 function lockedBody(){
   if(memItems) return (memItems.length ? "" : '<p class="sub">Nothing here yet.</p>') +
     `<ul>${memItems.map(i=>`<li><b>${esc(i[0])}</b>${i[1] ? `<small>${esc(i[1])}</small>` : ""}</li>`).join("")}</ul>`;
-  return `<div class="lock"><p>This list is password protected.</p>
-    <form id="memForm"><input id="pw" type="password" placeholder="Password" aria-label="Password" autocomplete="off">
+  return `<div class="lock"><form id="memForm"><input id="pw" type="password" placeholder="Password" aria-label="Password" autocomplete="off">
     <button type="submit">Unlock</button></form><div class="err" id="err" role="alert"></div></div>`;
 }
 const strip = document.getElementById("strip"), main = document.getElementById("lists"), q = document.getElementById("q");
