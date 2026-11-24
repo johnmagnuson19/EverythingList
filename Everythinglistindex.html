@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Everything List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* VOICE: personal, quiet, quick to use
+   IDEA: an address book's thumb-index letter tabs
+   PICTURE: the A–Z tab strip itself, large and sticky
+   COLOUR and TYPE: white / ink, cobalt accent; DM Serif Display letters, Inter text
+   LAYOUT: strip on top, then one calm column of lists */
+:root{color-scheme:light dark;
+  --bg:light-dark(#ffffff,#0f1115);
+  --ink:light-dark(#141414,#eceef2);
+  --mute:light-dark(#9a9ca3,#5d6270);
+  --line:light-dark(#e6e7ea,#23262e);
+  --card:light-dark(#f6f7f9,#171a21);
+  --acc:light-dark(#2b4bff,#7c93ff);
+  --accInk:light-dark(#ffffff,#0f1115)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
+html{scroll-padding-top:150px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+header{padding:28px max(5vw,16px) 6px;max-width:900px;margin:0 auto}
+h1{font:400 clamp(32px,6vw,48px)/1.05 "DM Serif Display",Georgia,serif;margin:0 0 4px;text-wrap:balance}
+.sub{color:var(--mute);margin:0}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px max(5vw,16px)}
+.strip{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:4px}
+.strip a,.strip span{display:flex;align-items:center;justify-content:center;height:44px;border-radius:8px;
+  font:400 22px/1 "DM Serif Display",Georgia,serif;text-decoration:none}
+.strip span{color:var(--mute);opacity:.55}
+.strip a{background:var(--acc);color:var(--accInk);transition:transform .15s}
+.strip a:hover{transform:translateY(-2px)}
+.strip a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.search{max-width:900px;margin:10px auto 0;display:block;width:100%;font:16px Inter,sans-serif;padding:10px 14px;
+  border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.search:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+main{max-width:900px;margin:0 auto;padding:10px max(5vw,16px) 60px}
+section{padding:22px 0;border-bottom:1px solid var(--line)}
+h2{font:400 28px/1.15 "DM Serif Display",Georgia,serif;margin:0 0 10px}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+li{background:var(--card);border-radius:10px;padding:11px 14px}
+li b{font-weight:600}
+.g{color:inherit;text-decoration:underline;text-decoration-color:var(--mute);text-underline-offset:3px}
+.g:hover{color:var(--acc);text-decoration-color:var(--acc)}
+.g:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:3px}li small{color:var(--mute);font-size:14px;margin-left:6px}
+.empty{color:var(--mute);padding:30px 0}
+.top{display:inline-block;margin-top:10px;color:var(--acc);font-size:14px;text-decoration:none}
+footer{color:var(--mute);font-size:13px;text-align:center;padding-bottom:30px}
+@media(max-width:600px){.strip a,.strip span{height:40px;font-size:19px}html{scroll-padding-top:160px}}
+</style>
+</head>
+<body>
+<header id="top">
+  <h1>Everything List</h1>
+  <p class="sub">Things and places I like, and things I want to do someday.</p>
+</header>
+<nav class="tabs" aria-label="Jump to letter">
+  <div class="strip" id="strip"></div>
+  <input class="search" id="q" type="search" placeholder="Search all lists…" aria-label="Search all lists">
+</nav>
+<main id="lists"></main>
+<footer>Last updated Nov 23, 2026</footer>
+<script>
+{
+const LISTS = [
+  {title:"Bands I Like (Even Just a Little)", items:[
+    ["Porch Light","band"],
+    ["Twenty One Pilots","band"]]},
+  {title:"Throwback", items:[
+    ["Reddit Secret Santa"]]},
+  {title:"Card Shops", items:[
+    ["Waxxed","Palm Beach Gardens, FL"]]},
+  {title:"Crashout Songs", items:[
+    ["Center Mass","Twenty One Pilots"]]},
+  {title:"Eerie, Sad, Dark Lighting Songs for Instagram", items:[
+    ["Isle of the Dead (Op. 29)","Sergei Rachmaninoff"],
+    ["Nocturne No. 20 in C-sharp minor (Op. posth.)","Frédéric Chopin"]]},
+  {title:"Pizza Places", items:[
+    ["Felina","Fort Worth, TX"],
+    ["Leonardi's","Palm Beach, FL"]]},
+  {title:"Songs for my Funeral", items:[
+    ["Nocturne No. 20 in C-sharp minor (Op. posth.)","Frédéric Chopin"]]}
+];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+LISTS.sort((a,b)=>a.title.localeCompare(b.title));
+LISTS.forEach(l=>l.items.sort((a,b)=>a[0].localeCompare(b[0])));
+const strip = document.getElementById("strip"), main = document.getElementById("lists"), q = document.getElementById("q");
+
+function render(){
+  const term = q.value.trim().toLowerCase();
+  const shown = LISTS.map(l=>{
+    if(!term) return l;
+    if(l.title.toLowerCase().includes(term)) return l;
+    const items = l.items.filter(i=>i.join(" ").toLowerCase().includes(term));
+    return items.length ? {...l, items} : null;
+  }).filter(Boolean);
+  const first = {};
+  shown.forEach(l=>{const L=l.title[0].toUpperCase(); if(!first[L]) first[L]=slug(l.title);});
+  strip.innerHTML = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L =>
+    first[L] ? `<a href="#${first[L]}" aria-label="Jump to ${L}">${L}</a>` : `<span aria-hidden="true">${L}</span>`).join("");
+  main.innerHTML = shown.length ? shown.map(l=>`
+    <section id="${slug(l.title)}">
+      <h2>${esc(l.title)}</h2>
+      ${l.items.length ? "" : '<p class="sub">Nothing here yet.</p>'}<ul>${l.items.map(i=>`<li><a class="g" href="https://www.google.com/search?q=${encodeURIComponent(i.filter(Boolean).join(' '))}" target="_blank" rel="noopener"><b>${esc(i[0])}</b></a><small>${esc(i[1]||"")}</small></li>`).join("")}</ul>
+      <a class="top" href="#top">↑ Back to top</a>
+    </section>`).join("") : `<p class="empty">Nothing matches “${esc(q.value)}”.</p>`;
+}
+q.addEventListener("input", render);
+render();
+}
+</script>
+</body>
+</html>
