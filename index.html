@@ -131,7 +131,7 @@ q.addEventListener("input", render);
 render();
 
 /* Memories: encrypted with AES-GCM, key from the password via PBKDF2-SHA256 */
-const MEM = /*MEM*/{"salt": "KUDyr6AFHGo8/U+swBEkXA==", "iv": "tHPLCPJa0pjR1ZAm", "iter": 250000, "ct": "non5R5gs3PnGLFOdbRPpDDy8aX1TIyxhIS242oOf5DIcmUb0Es3/yB59B7q/GDjYPAWBR3FcDYBWcEwgOLUq7F9dEJ/4xq2HTMxqvHyA"}/*END*/;
+const MEM = /*MEM*/{"salt": "SJm518ECftsOdkPj8qqexQ==", "iv": "G7NeuDv6OFCKoYTB", "iter": 250000, "ct": "wibdP2JVrChJgySYswCgkXab1wJMGaRGhlYw2WEPvT0ZbaZDSaOPA6xNMuf9LaG8qWZLSM8byldLTDd4zzNNtNT11cn+AEj2+S5olViISdxRAo2LlWFRAfZC/pcPBf7cFZLOW8q4Ekzs36CG1v10Y7uK8xxvg2byEkrS2fVN4Ld7pVwO8a58KtBs"}/*END*/;
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 async function unlock(pass){
   const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
